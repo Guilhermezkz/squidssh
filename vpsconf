@@ -1,10 +1,11 @@
 #/bin/bash
 
 echo -e "\033[01;31mNAO ME RESPONSABILIZO POR QUALQUER DANO \033[0m"
-SLEEP 2
+sleep 2
  
 echo -e "\033[01;31mCONFIGURANDO, Aguarde...\033[0m"
 echo -e "\033[01;31mAtualizando e instalando Pacotes...\033[0m"
+sleep 1
 apt-get update -y 1> /dev/null 2> /dev/null
 apt-get upgrade -y 1> /dev/null 2> /dev/null
 yum update 1> /dev/null 2> /dev/null
@@ -18,7 +19,9 @@ apt-get install squid* -y 1> /dev/null 2> /dev/null
 apt-get install ufw -y 1> /dev/null 2> /dev/null
 aptitude install ufw -y 1> /dev/null 2> /dev/null
 clear
+
 echo -e "\033[01;31mAtualizados...\033[0m"
+
 echo -e "\033[1;31mC A P I T U R A N D O  I P"
 sleep 1
 ip=$(curl https://api.ipify.org/)
@@ -27,12 +30,14 @@ clear
 
 echo -e "\033[01;31mConfigurando DNS\033[0m"
 sleep 2
+
 rm /etc/resolv.conf 1>/dev/null 2>/dev/null
 echo nameserver 1.1.1.1> /etc/resolv.conf
 echo nameserver 1.0.0.1> /etc/resolv.conf
 chmod 777 /etc/resolv.conf
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
+
 echo -e "\033[01;31mAdicionado o DNS\033[0m"
 sleep 1
 
@@ -63,6 +68,7 @@ clear
 
 echo -e "\033[01;31mCONFIGURANDO SQUID, Aguarde...\033[0m"
 sleep 2
+
 cd /etc/squid
 echo "http_port 80" >> squid.conf
 echo "http_port 8080" >> squid.conf
@@ -103,6 +109,7 @@ clear
 
 echo -e "\033[01;31mCONFIGURANDO SQUID3, Aguarde...\033[0m"
 sleep 2
+
 cd /etc/squid3
 echo "http_port 80" >> squid.conf
 echo "http_port 8080" >> squid.conf
