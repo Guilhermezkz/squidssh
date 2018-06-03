@@ -12,7 +12,7 @@ sleep 2
 clear
 
 echo -e "\033[1;33m ######################################"
-echo -e "\033[1;33m- - - - -> \033[01;34mCONFIGURANDO  O\033[0m Aguarde..."
+echo -e "\033[1;33m- - - - -> \033[01;34mCONFIGURANDO \033[0m Aguarde..."
 echo -e "\033[1;33m ###########################"
 echo -e "\033[01;31mAtualizando e instalando Pacotes...\033[0m"
 echo -e "\033[1;33m ######################################"
@@ -50,7 +50,7 @@ clear
 
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;33m ######################################"
-echo -e "\033[1;33m- - - - -> \033[01;34mCONFIGURANDO O DNS\033[0m DNS"
+echo -e "\033[1;33m- - - - -> \033[01;34mCONFIGURANDO O\033[0m DNS"
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;33m ######################################"
 sleep 2
@@ -71,6 +71,7 @@ echo -e "\033[1;33m ######################################"
 echo -e "\033[1;33m- - - - -> \033[01;34mCONFIGURANDO A SSH\033[0m Aguarde..."
 echo -e "\033[1;33m ######################################"
 sleep 2
+
 rm /etc/ssh/sshd_custom 1>/dev/null 2>/dev/null
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 cat /etc/ssh/sshd_config |grep -v -i allowusers |grep -v -i passwordauthen |grep -v -i uselogin |grep -v -i permitrootlogin |grep -v -i permittunnel >> /etc/ssh/sshd_custom
@@ -246,10 +247,13 @@ wget https://raw.githubusercontent.com/Guilhermezkz/Python/master/proxy.txt
 wget https://raw.githubusercontent.com/Guilhermezkz/Python/master/proxy.py
 chmod a+x proxy.py
 nohup python proxy.py > proxy.txt &
+clear
 echo -e "\033[1;33m PRONTO"
 echo -e "\033[1;33m ############################################"
 clear
 
+echo -e "\033[1;33m ############################################"
+clear
 
 echo -e "\033[1;33m ############################################"
 echo -e "\033[1;31mC O N F I G U R A D O  C O M  S U C E S S O"
