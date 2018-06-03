@@ -17,7 +17,6 @@ apt-get install squid -y 1> /dev/null 2> /dev/null
 apt-get install squid* -y 1> /dev/null 2> /dev/null
 apt-get install ufw -y 1> /dev/null 2> /dev/null
 aptitude install ufw -y 1> /dev/null 2> /dev/null
-sudo ufw enable 1> /dev/null 2> /dev/null
 clear
 echo -e "\033[01;31mAtualizados...\033[0m"
 echo -e "\033[1;31mC A P I T U R A N D O  I P"
@@ -34,6 +33,7 @@ chmod 777 /etc/resolv.conf
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
 echo -e "\033[01;31mAdicionado o DNS\033[0m"
+sleep 1
 
 echo -e "\033[01;31mCONFIGURANDO A SSH, Aguarde...\033[0m"
 sleep 1
@@ -83,6 +83,8 @@ echo "acl accept dstdomain -i REQUEST" >> squid.conf
 echo "acl accept dstdomain -i METHOD" >> squid.conf
 echo "acl accept dstdomain -i NETDATA" >> squid.conf
 echo "acl accept dstdomain -i MOVE" >> squid.conf
+echo "acl accept dstdomain -i .com.br" >> squid.conf
+echo "acl accept dstdomain -i .br" >> squid.conf
 echo "acl all src 0.0.0.0/0" >> squid.conf
 echo "http_access allow ip" >> squid.conf
 echo "http_access allow gui" >> squid.conf
@@ -145,6 +147,7 @@ ufw allow 80 1>/dev/null 2>/dev/null
 ufw allow 8080 1>/dev/null 2>/dev/null
 ufw allow 8799 1>/dev/null 2>/dev/null
 ufw allow 3128 1>/dev/null 2>/dev/null
+sudo ufw enable 1> /dev/null 2> /dev/null
 
 echo -e "\033[01;31mReinicado\033[0m"
 sleep 1
