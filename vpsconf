@@ -28,7 +28,8 @@ clear
 echo -e "\033[01;31mConfigurando DNS\033[0m"
 sleep 2
 rm /etc/resolv.conf 1>/dev/null 2>/dev/null
-echo dns_nameservers 1.1.1.1 1.0.0.1> /etc/resolv.conf
+echo nameserver 1.1.1.1> /etc/resolv.conf
+echo nameserver 1.0.0.1> /etc/resolv.conf
 chmod 777 /etc/resolv.conf
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
