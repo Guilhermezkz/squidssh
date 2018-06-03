@@ -67,8 +67,7 @@ service ssh restart 1> /dev/null 2> /dev/null
 
 echo -e "\033[01;31mAPAGANDO O SQUID\033[0m"
 rm /etc/squid/squid.conf 1> /dev/null 2> /dev/null
-rm /etc/squid/squid.conf 1> /dev/null 2> /dev/null
-clear
+rm /etc/squid3/squid.conf 1> /dev/null 2> /dev/null
 
 echo -e "\033[01;31mCONFIGURANDO SQUID, Aguarde...\033[0m"
 sleep 2
