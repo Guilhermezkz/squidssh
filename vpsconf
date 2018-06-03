@@ -1,11 +1,15 @@
 #/bin/bash
 
+echo -e "\033[01;31mINICIANDO \033[0m"
+clear
+
 echo -e "\033[01;31mNAO ME RESPONSABILIZO POR QUALQUER DANOS \033[0m"
 sleep 2
  
 echo -e "\033[01;31mCONFIGURANDO, Aguarde...\033[0m"
 echo -e "\033[01;31mAtualizando e instalando Pacotes...\033[0m"
 sleep 1
+
 apt-get update -y 1> /dev/null 2> /dev/null
 apt-get upgrade -y 1> /dev/null 2> /dev/null
 yum update 1> /dev/null 2> /dev/null
@@ -38,11 +42,11 @@ chmod 777 /etc/resolv.conf
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
 
-echo -e "\033[01;31mAdicionado o DNS\033[0m"
+echo -e "\033[01;31mDNS adicionado\033[0m"
 sleep 1
 
 echo -e "\033[01;31mCONFIGURANDO A SSH, Aguarde...\033[0m"
-sleep 1
+sleep 2
 rm /etc/ssh/sshd_custom 1>/dev/null 2>/dev/null
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 cat /etc/ssh/sshd_config |grep -v -i allowusers |grep -v -i passwordauthen |grep -v -i uselogin |grep -v -i permitrootlogin |grep -v -i permittunnel >> /etc/ssh/sshd_custom
@@ -61,7 +65,7 @@ sleep 1
 service ssh restart 1> /dev/null 2> /dev/null
 /etc/init.d/ssh restart 1> /dev/null 2> /dev/null
 
-echo -e "\033[01;31mApagando o SQUID\033[0m"
+echo -e "\033[01;31mAPAGANDO O SQUID\033[0m"
 rm /etc/squid/squid.conf 1> /dev/null 2> /dev/null
 rm /etc/squid/squid.conf 1> /dev/null 2> /dev/null
 clear
@@ -146,26 +150,31 @@ echo "forwarded_for off" >> squid.conf
 echo "via off" >> squid.conf
 clear
 
-echo -e "\033[01;31mReiniciando os SQUID, Aguarde...\033[0m"
+echo -e "\033[01;31mREINICIANDO O SQUID, Aguarde...\033[0m"
+echo -e "\033[01;31mVAI DEMORAR UM POUQUINHO, Aguarde...\033[0m"
 sleep 1
 
 service squid restart 1> /dev/null 2> /dev/null
+clear
 service squid3 restart 1> /dev/null 2> /dev/null
+clear
 service squid* restart 1> /dev/null 2> /dev/null
+clear
 /etc/init.d/squid restart 1> /dev/null 2> /dev/null
+clear
 /etc/init.d/squid3 restart 1> /dev/null 2> /dev/null
+clear
 /etc/init.d/squid* restart 1> /dev/null 2> /dev/null
 clear
 
 echo -e "\033[01;31mAtivando UFW\033[0m"
-sleep 1
+sleep 2
 
 ufw allow 443 1>/dev/null 2>/dev/null
 ufw allow 80 1>/dev/null 2>/dev/null
 ufw allow 8080 1>/dev/null 2>/dev/null
 ufw allow 8799 1>/dev/null 2>/dev/null
 ufw allow 3128 1>/dev/null 2>/dev/null
-sleep 1
 sudo ufw enable 1> /dev/null 2> /dev/null
 clear
 
