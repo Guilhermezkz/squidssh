@@ -124,6 +124,10 @@ class ConnectionHandler(threading.Thread):
             if split != '':
                 self.client.recv(BUFLEN)
 
+		str = "Line1-abcdef \nLine2-abc \nLine4-abcd";
+           print str.split( )
+           print str.split(' ', 1 )
+		
             if hostPort != '':
                 passwd = self.findHeader(self.client_buffer, 'X-Pass')
 				
