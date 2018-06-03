@@ -148,6 +148,7 @@ clear
 
 echo -e "\033[01;31mReiniciando os SQUID, Aguarde...\033[0m"
 sleep 1
+
 service squid restart 1> /dev/null 2> /dev/null
 service squid3 restart 1> /dev/null 2> /dev/null
 service squid* restart 1> /dev/null 2> /dev/null
