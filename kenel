@@ -1,0 +1,108 @@
+#/bin/bash
+
+echo -e "\033[01;31m#################################################\033[0m"
+echo -e "\033[01;31mNAO ME RESPONSABILIZO POR QUALQUER DANOS \033[0m"
+echo -e "\033[01;31m#################################################\033[0m"
+sleep 3
+clear
+
+echo -e "\033[01;31m#################################################\033[0m"
+echo -e "\033[01;31mSCRIPT PATA TIRAR O LIMIT DO KENEL \033[0m"
+echo -e "\033[01;31m#################################################\033[0m"
+sleep 2
+clear
+
+echo -e "\033[01;31m#################################################\033[0m"
+echo -e "\033[01;31mINICIANDO...\033[0m"
+echo -e "\033[01;31m#################################################\033[0m"
+echo -e "\033[01;31m####################\033[0m"
+sleep 1
+
+echo -e "\033[01;31m#################################################\033[0m"
+echo -e "\033[01;31mLiberando Limites \033[0m"
+sleep 1
+echo -e "\033[01;31m###\033[0m"
+echo -e "\033[01;31m########\033[0m"
+echo -e "\033[01;31m##############\033[0m"
+echo -e "\033[01;31m####################\033[0m"
+echo -e "\033[01;31m##############################\033[0m"
+
+cd /etc/security/
+echo "# número de processos e threads" >> /etc/security/limits.conf
+echo "nproc unlimited" >> /etc/security/limits.conf
+echo "# número de arquivos abertos" >> /etc/security/limits.conf
+echo "nofile 1048576" >> /etc/security/limits.conf
+echo "# tamanho de locked-in-memory" >> /etc/security/limits.conf
+echo "memlock unlimited" >> /etc/security/limits.conf
+echo "# tamanho da memória virtual" >> /etc/security/limits.conf
+echo "as unlimited" >> /etc/security/limits.conf
+echo "# Tempo de cpu" >> /etc/security/limits.conf
+echo "cpu unlimited" >> /etc/security/limits.conf
+echo "# Tamanho de arquivo" >> /etc/security/limits.conf
+echo "fsize unlimited" >> /etc/security/limits.conf
+echo "# Total de memory-locks" >> /etc/security/limits.conf
+echo "memlock unlimited" >> /etc/security/limits.conf
+echo "# Tamanho da fila de mensageria" >> /etc/security/limits.conf
+echo "msgqueue unlimited" >> /etc/security/limits.conf
+echo "# Total de locks em threads" >> /etc/security/limits.conf
+echo "locks unlimited" >> /etc/security/limits.conf
+
+echo -e "\033[01;31m#######################################\033[0m"
+
+echo "# Aumentando limite do file descriptor" >> /etc/sysctl.conf
+echo "fs.file-max = 100000" >> /etc/sysctl.conf
+echo "# Desabilitando memória swap" >> /etc/sysctl.conf
+echo "vm.swappiness = 0" >> /etc/sysctl.conf
+echo "# Aumentando range de portas do IP local e de conexões" >> /etc/sysctl.conf
+echo "net.ipv4.ip_local_port_range = 10000 65000" >> /etc/sysctl.conf
+echo "net.core.sormaxconn = 65000" >> /etc/sysctl.conf
+echo "# Aumentando buffer de rede TCP" >> /etc/sysctl.conf
+echo "# Defina o máximo de 16M (16777216) para redes de 1GB and 32M (33554432) ou 54M (56623104) para redes de 10GB" >> /etc/sysctl.conf
+echo "net.core.rmem_max = 16777216" >> /etc/sysctl.conf
+echo "net.core.wmem_max = 16777216" >> /etc/sysctl.conf
+echo "net.core.rmem_default = 16777216" >> /etc/sysctl.conf
+echo "net.core.wmem_default = 16777216" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_rmem = 4096 87380 16777216" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_wmem = 4096 65536 16777216" >> /etc/sysctl.conf
+echo "# Aumentando tamanho de pacotes de backlog e buckets" >> /etc/sysctl.conf
+echo "net.core.netdev_max_backlog = 50000" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_max_syn_backlog = 30000" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_max_tw_buckets = 2000000" >> /etc/sysctl.conf
+echo "# Habilitando reuso de sockets TCP" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_tw_reuse = 1" >> /etc/sysctl.conf
+echo "# Aumentando timeout do TCP para reuso de sockets" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_fin_timeout = 10" >> /etc/sysctl.conf
+echo "# Destabilitando início lento de em conexões IDLE" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_slow_start_after_idle = 0" >> /etc/sysctl.conf
+echo "# Aumentando buffer de conexões UDP" >> /etc/sysctl.conf
+echo "net.ipv4.udp_rmem_min = 8192" >> /etc/sysctl.conf
+echo "net.ipv4.udp_wmem_min = 8192" >> /etc/sysctl.conf
+echo "# Desabilitando redirecionamento e roteamento" >> /etc/sysctl.conf
+echo "net.ipv4.conf.all.send_redirects = 0" >> /etc/sysctl.conf
+echo "net.ipv4.conf.all.accept_redirects = 0" >> /etc/sysctl.conf
+echo "net.ipv4.conf.all.accept_source_route = 0" >> /etc/sysctl.conf
+echo "# Habilitando log de pacotes" >> /etc/sysctl.conf
+echo "net.ipv4.conf.all.log_martians = 1" >> /etc/sysctl.conf
+echo "# Aumentando tempo de migração de processos entre cores da cpu e desabilitando auto-agrupamento de processos" >> /etc/sysctl.conf
+echo "kernel.sched_migration_cost_ns = 5000000" >> /etc/sysctl.conf
+echo "kernel.sched_autogroup_enabled = 0" >> /etc/sysctl.conf
+   
+
+echo -e "\033[01;31m##################################################\033[0m"
+echo -e "\033[01;31mPronto... \033[0m"
+sleep 1
+clear
+
+echo -e "\033[01;31mSCRIPT PATA TIRAR O LIMIT DO KENEL \033[0m"
+echo -e "\033[01;31mFeito Por: @LindoFuLL \033[0m"
+echo -e "\033[01;31mO Servidor Sera Reiniciado\033[0m"
+sleep 4
+echo -e "\033[01;31m####\033[0m"
+echo -e "\033[01;31m#########\033[0m"
+echo -e "\033[01;31m###############\033[0m"
+echo -e "\033[01;31m#T C H A U...\033[0m"
+
+reboot
+
+exit 0
+fi
