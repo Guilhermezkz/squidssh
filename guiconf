@@ -59,7 +59,7 @@ sleep 2
 
 rm /etc/resolv.conf 1>/dev/null 2>/dev/null
 echo nameserver 1.1.1.1> /etc/resolv.conf
-echo nameserver 1.0.0.1> /etc/resolv.conf
+echo nameserver 8.8.8.8> /etc/resolv.conf
 chmod 777 /etc/resolv.conf
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
@@ -229,6 +229,7 @@ ufw allow 80 1> /dev/null 2>/dev/null
 ufw allow 8080 1> /dev/null 2>/dev/null
 ufw allow 8799 1> /dev/null 2>/dev/null
 ufw allow 3128 1> /dev/null 2>/dev/null
+ufw allow 7300 1> /dev/null 2>/dev/null
 sudo ufw enable 1> /dev/null 2> /dev/null
 echo -e "\033[01;31mATIVADO\033[0m"
 sleep 1
