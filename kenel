@@ -16,16 +16,21 @@ echo -e "\033[01;31m#################################################\033[0m"
 echo -e "\033[01;31mINICIANDO...\033[0m"
 echo -e "\033[01;31m#################################################\033[0m"
 echo -e "\033[01;31m####################\033[0m"
-sleep 1
+sleep 2
 
 echo -e "\033[01;31m#################################################\033[0m"
 echo -e "\033[01;31mLiberando Limites \033[0m"
-sleep 1
+sleep 2
 echo -e "\033[01;31m###\033[0m"
+sleep 1
 echo -e "\033[01;31m########\033[0m"
+sleep 1
 echo -e "\033[01;31m##############\033[0m"
+sleep 1
 echo -e "\033[01;31m####################\033[0m"
+sleep 1
 echo -e "\033[01;31m##############################\033[0m"
+sleep 1
 
 cd /etc/security/
 echo "# número de processos e threads" >> /etc/security/limits.conf
@@ -48,6 +53,7 @@ echo "# Total de locks em threads" >> /etc/security/limits.conf
 echo "locks unlimited" >> /etc/security/limits.conf
 
 echo -e "\033[01;31m#######################################\033[0m"
+sleep 1
 
 echo "# Aumentando limite do file descriptor" >> /etc/sysctl.conf
 echo "fs.file-max = 100000" >> /etc/sysctl.conf
@@ -90,7 +96,7 @@ echo "kernel.sched_autogroup_enabled = 0" >> /etc/sysctl.conf
 
 echo -e "\033[01;31m##################################################\033[0m"
 echo -e "\033[01;31mPronto... \033[0m"
-sleep 1
+sleep 2
 clear
 
 echo -e "\033[01;31mSCRIPT PATA TIRAR O LIMIT DO KENEL \033[0m"
@@ -98,9 +104,13 @@ echo -e "\033[01;31mFeito Por: @LindoFuLL \033[0m"
 echo -e "\033[01;31mO Servidor Sera Reiniciado\033[0m"
 sleep 4
 echo -e "\033[01;31m####\033[0m"
+sleep 1
 echo -e "\033[01;31m#########\033[0m"
+sleep 1
 echo -e "\033[01;31m###############\033[0m"
+sleep 1
 echo -e "\033[01;31m#T C H A U...\033[0m"
+sleep 3
 
 reboot
 
