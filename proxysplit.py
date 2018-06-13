@@ -76,7 +76,7 @@ class ProxyRequestHandler(BaseHTTPRequestHandler):
                 p2 = Popen(["openssl", "x509", "-req", "-days", "3650", "-CA", self.cacert, "-CAkey", self.cakey, "-set_serial", epoch, "-out", certpath], stdin=p1.stdout, stderr=PIPE)
                 p2.communicate()
 
-        self.wfile.write("%s %d %s\r\n" % (self.protocol_version, 200, '<font color="blue">by: Joe Linux</>'))
+        self.wfile.write("%s %d %s\r\n" % (self.protocol_version, 200, '<font color="red">by: Gui</>'))
         self.end_headers()
 
         self.connection = ssl.wrap_socket(self.connection, keyfile=self.certkey, certfile=certpath, server_side=True)
@@ -95,9 +95,9 @@ class ProxyRequestHandler(BaseHTTPRequestHandler):
         try:
             s = socket.create_connection(address, timeout=self.timeout)
         except Exception as e:
-            self.send_error(200, '<font color="blue">by: Joe Linux</>')
+            self.send_error(200, '<font color="red">by: Gui</>')
             return
-        self.send_response(200, '<font color="blue">by: Joe Linux</>')
+        self.send_response(200, '<font color="red">by: Gui</>')
         self.end_headers()
     
         conns = [self.connection, s]
@@ -172,7 +172,7 @@ class ProxyRequestHandler(BaseHTTPRequestHandler):
         except Exception as e:
             if origin in self.tls.conns:
                 del self.tls.conns[origin]
-            self.send_error(200, '<font color="blue">by: Joe Linux</>')
+            self.send_error(200, '<font color="red">by: Gui</>')
             return
 
         content_encoding = res.headers.get('Content-Encoding', 'identity')
@@ -370,7 +370,7 @@ def test(HandlerClass=ProxyRequestHandler, ServerClass=ThreadingHTTPServer, prot
     if sys.argv[1:]:
         port = int(sys.argv[1])
     else:
-        port = 80
+        port = 3128
     server_address = ('localhost', port)
 
     HandlerClass.protocol_version = protocol
