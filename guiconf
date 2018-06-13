@@ -75,9 +75,13 @@ echo -e "\033[1;33m ######################################"
 sleep 2
 
 rm /etc/resolv.conf 1>/dev/null 2>/dev/null
-echo nameserver $dns> /etc/resolv.conf
-echo nameserver $dns1> /etc/resolv.conf
+sleep 1
+echo "nameserver $dns"> /etc/resolv.conf
+sleep 1
+echo "nameserver $dns1"> /etc/resolv.conf
+sleep 1
 chmod 777 /etc/resolv.conf
+sleep 1
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
 
