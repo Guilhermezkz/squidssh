@@ -56,13 +56,11 @@ clear
 
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;31mD I G I T E  O  DNS  P R I M A R I O"
-echo -e "\033[1;31mDNS:
 read -p ": " dns
 
 echo -e "\033[1;33m $dns"
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;31mD I G I T E  O  DNS  S E C U N D A R I O"
-echo -e "\033[1;31mDNS:
 read -p ": " dns1
 
 echo -e "\033[1;33m $dns1"
