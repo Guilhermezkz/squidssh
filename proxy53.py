@@ -12,7 +12,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 200 <font color="red">By: @LindoFuLL</font> <font color="blue">Canal: @PayloadHTTP <font color="red"> Port 53</font>\r\nReferer: oi.ddivulga.com\r\nReferer: sdp.vivo.com.br\r\nReferer: mc.claro.com.br\r\n\r\n'
+RESPONSE = 'HTTP/1.1 200 <font color="red">By: @LindoFuLL</font> <font color="blue">Canal: @PayloadHTTP</font> <font color="black"> Port 53</font>\r\nReferer: oi.ddivulga.com\r\nReferer: sdp.vivo.com.br\r\nReferer: mc.claro.com.br\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 
