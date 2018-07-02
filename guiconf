@@ -23,7 +23,7 @@ sleep 2
 
 apt-get update -y 1> /dev/null 2> /dev/null
 apt-get upgrade -y 1> /dev/null 2> /dev/null
-yum update 1> /dev/null 2> /dev/null
+yum update -y 1> /dev/null 2> /dev/null
 apt-get install curl -y 1> /dev/null 2> /dev/null
 yum install squid -y 1> /dev/null 2> /dev/null
 yum install squid3 -y 1> /dev/null 2> /dev/null
@@ -152,8 +152,6 @@ clear
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;31mD I G I T E  A  P O R T A  Q U E  D E S E J A R "
 
-echo -e "\033[1;31mN A O   P O D E   S E R   A  80 "
-
 echo -e "\033[1;31mP O R T  S S L"
 read -p ": " ssl
 echo -e "\033[1;33m ######################################"
@@ -252,8 +250,6 @@ echo "http_access deny all" >> squid.conf
 echo "forwarded_for off" >> squid.conf
 echo "via off" >> squid.conf
 clear
-cd
-clear
 
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;33m ######################################"
@@ -316,7 +312,6 @@ service squid3 restart 1> /dev/null 2> /dev/null
 /etc/init.d/squid restart 1> /dev/null 2> /dev/null
 /etc/init.d/squid3 restart 1> /dev/null 2> /dev/null
 echo -e "\033[1;33m #########P P O N T O#############"
-clear
 cd
 clear
 
