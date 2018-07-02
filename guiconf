@@ -83,9 +83,10 @@ sleep 2
 
 rm /etc/resolv.conf 1>/dev/null 2>/dev/null
 sleep 1
-echo "nameserver $dns $dns1"> /etc/resolv.conf
+echo "options rotate">> /etc/resolv.conf
+echo "nameserver $dns $dns1 192.168.2.1">> /etc/resolv.conf
 sleep 1
-chmod 777 /etc/resolv.conf
+chmod 777 /etc/resolv.conf 1>/dev/null 2>/dev/null
 sleep 1
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
@@ -129,9 +130,14 @@ echo -e "\033[1;33m #################"
 
 openssl genrsa 2048 > stunnel.key
 openssl req -new -key stunnel.key -x509 -days 1000 -out stunnel.crt
+openssl x509 -req -days 1000 -in stunnel.csr -signkey stunnel.key -out stunnel.crt
+cat stunnel.crt stunnel.key > stunnel.pem
+chmod 640 stunnel.key stunnel.pem
+mv stunnel.pem /etc/stunnel/
 
 echo -e "\033[1;33m #####G E R A D O########"
 echo -e "\033[1;33m ######################################"
+sleep 1
 clear
 
 echo -e "\033[1;33m ######################################"
@@ -142,13 +148,15 @@ rm /etc/stunnel/stunnel.conf
 clear
 rm /etc/default/stunnel4
 clear
-cat stunnel.crt stunnel.key > stunnel.pem 
-mv stunnel.pem /etc/stunnel/
-clear
+
+echo -e "\033[1;33m ######################################"
 echo -e "\033[1;31mD I G I T E  A  P O R T A  Q U E  D E S E J A R "
+
 echo -e "\033[1;31mN A O   P O D E   S E R   A  80 "
+
 echo -e "\033[1;31mP O R T  S S L"
 read -p ": " ssl
+echo -e "\033[1;33m ######################################"
 clear
 
 echo -e "\033[1;33m ######################################"
@@ -244,10 +252,14 @@ echo "http_access deny all" >> squid.conf
 echo "forwarded_for off" >> squid.conf
 echo "via off" >> squid.conf
 clear
+cd
+clear
 
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;33m ######################################"
+
 echo -e "\033[1;33m- - - - -> \033[01;34mCONFIGURANDO SQUID3\033[0m Aguarde..."
+
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;33m ######################################"
 sleep 2
@@ -291,8 +303,10 @@ clear
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;33m #############################"
 echo -e "\033[1;33m- - - - -> \033[01;34mREINICIANDO O SQUID\033[0m Aguarde..."
+
 echo -e "\033[1;33m ########################"
 echo -e "\033[1;33m- - - - -> \033[01;34mVAI DEMORAR UM POUQUINHO\033[0m Aguarde..."
+
 echo -e "\033[1;33m ##############################"
 echo -e "\033[1;33m ######################################"
 sleep 1
@@ -303,28 +317,31 @@ service squid3 restart 1> /dev/null 2> /dev/null
 /etc/init.d/squid3 restart 1> /dev/null 2> /dev/null
 echo -e "\033[1;33m #########P P O N T O#############"
 clear
+cd
+clear
 
 echo -e "\033[1;33m ######################################"
 echo -e "\033[01;31mATIVANDO U F W\033[0m"
 echo -e "\033[1;33m ######################################"
 sleep 2
 
-ufw allow ssh> /dev/null 2>/dev/null
-ufw allow http> /dev/null 2>/dev/null
-ufw allow squid> /dev/null 2>/dev/null
-ufw allow squid3> /dev/null 2>/dev/null
-ufw allow 22> /dev/null 2>/dev/null
-ufw allow https> /dev/null 2>/dev/null
-ufw allow 443> /dev/null 2>/dev/null
-ufw allow 80> /dev/null 2>/dev/null
-ufw allow 8080> /dev/null 2>/dev/null
-ufw allow 8799> /dev/null 2>/dev/null
-ufw allow 3128> /dev/null 2>/dev/null
-ufw allow 7300> /dev/null 2>/dev/null
+ufw allow ssh 1> /dev/null 2> /dev/null
+ufw allow http 1> /dev/null 2> /dev/null
+ufw allow squid 1> /dev/null 2> /dev/null
+ufw allow squid3 1> /dev/null 2> /dev/null
+ufw allow 22 1> /dev/null 2> /dev/null
+ufw allow https 1> /dev/null 2> /dev/null
+ufw allow 443 1> /dev/null 2> /dev/null
+ufw allow 80 1> /dev/null 2> /dev/null
+ufw allow 8080 1> /dev/null 2> /dev/null
+ufw allow 8799 1> /dev/null 2> /dev/null
+ufw allow 3128 1> /dev/null 2> /dev/null
+ufw allow 7300 1> /dev/null 2> /dev/null
 clear
+
 echo -e "\033[01;31mATIVANDO\033[0m"
 echo -e "\033[01;31mSE DEMORAR APERTE ENTER\033[0m"
-ufw enable> /dev/null 2> /dev/null
+ufw enable 1> /dev/null 2> /dev/null
 clear
 echo -e "\033[01;31mATIVADO\033[0m"
 echo -e "\033[1;33m ######################################"
@@ -343,25 +360,32 @@ rm proxy.txt > /dev/null 2> /dev/null
 rm proxy53.py.1 > /dev/null 2> /dev/null
 rm proxy.py1 > /dev/null 2> /dev/null
 rm proxy.txt1 > /dev/null 2> /dev/null
+rm proxy7300.py > /dev/null 2> /dev/null
+rm proxy7300.py.1 > /dev/null 2> /dev/null
+
 echo -e "\033[1;33m ######################################"
 sleep 1
 wget https://raw.githubusercontent.com/Guilhermezkz/Python/master/proxy.py
 echo -e "\033[1;33m ########"
 wget https://raw.githubusercontent.com/Guilhermezkz/squidssh/master/proxy53.py
-echo -e "\033[1;33m ########"
+echo -e "\033[1;33m ##############"
+wget https://raw.githubusercontent.com/Guilhermezkz/squidssh/master/proxy7300.py
+echo -e "\033[1;33m ######################"
 wget https://raw.githubusercontent.com/Guilhermezkz/squidssh/master/proxy.txt
-echo -e "\033[1;33m #################"
+echo -e "\033[1;33m ##################################"
 clear
 chmod a+x proxy.py
 sleep 1
 chmod a+x proxy53.py
 sleep 1
+chmod a+x proxy7300.py
+sleep 1
 nohup python proxy.py > proxy.txt &
 nohup python proxy53.py &
-sleep 1
-echo "*/1 * * * * root noup python proxy.py &">> /etc/crontab
+nohup python proxy7300.py &
 sleep 1
 clear
+
 echo -e "\033[1;33m PRONTO"
 echo -e "\033[1;33m ############################################"
 sleep 2
@@ -373,7 +397,7 @@ echo -e "\033[1;33m ############################################"
 echo -e "\033[1;33m- - - - -> \033[01;34mSEU IP HOST:\033[0m $ip"
 echo -e "\033[1;33m- - - - -> \033[01;34mPORT SSH:\033[0m 22, 443"
 echo -e "\033[1;33m- - - - -> \033[01;34mPORT SSL/TLS:\033[0m $ssl"
-echo -e "\033[1;33m- - - - -> \033[01;34mPORT PROXY:\033[0m Python 80 e 53, SQUID: 8080, 8799, 3128"
+echo -e "\033[1;33m- - - - -> \033[01;34mPORT PROXY:\033[0m Python 80 e 7300 e 53, SQUID: 8080, 8799, 3128"
 echo -e "\033[1;33m- - - - -> \033[01;34mREGRAS:\033[0m UFW"
 echo -e "\033[1;33m- - - - -> \033[01;34mDNS:\033[0m $dns e $dns1"
 echo -e "\033[1;33m ############################################"
