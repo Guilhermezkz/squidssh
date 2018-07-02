@@ -83,7 +83,7 @@ sleep 2
 
 rm /etc/resolv.conf 1>/dev/null 2>/dev/null
 sleep 1
-echo "nameserver $dns $dns1 192.168.2.1">> /etc/resolv.conf
+echo "nameserver $dns $dns1 ">> /etc/resolv.conf
 sleep 1
 chmod 777 /etc/resolv.conf 1>/dev/null 2>/dev/null
 sleep 1
@@ -129,10 +129,6 @@ echo -e "\033[1;33m #################"
 
 openssl genrsa 2048 > stunnel.key
 openssl req -new -key stunnel.key -x509 -days 1000 -out stunnel.crt
-openssl x509 -req -days 1000 -in stunnel.csr -signkey stunnel.key -out stunnel.crt
-cat stunnel.crt stunnel.key > stunnel.pem
-chmod 640 stunnel.key stunnel.pem
-mv stunnel.pem /etc/stunnel/
 
 echo -e "\033[1;33m #####G E R A D O########"
 echo -e "\033[1;33m ######################################"
@@ -146,6 +142,10 @@ sleep 2
 rm /etc/stunnel/stunnel.conf
 clear
 rm /etc/default/stunnel4
+clear
+cat stunnel.crt stunnel.key > stunnel.pem
+chmod 640 stunnel.key stunnel.pem
+mv stunnel.pem /etc/stunnel/
 clear
 
 echo -e "\033[1;33m ######################################"
