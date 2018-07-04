@@ -23,7 +23,7 @@ sleep 2
 
 apt-get update -y 1> /dev/null 2> /dev/null
 apt-get upgrade -y 1> /dev/null 2> /dev/null
-yum update -y 1> /dev/null 2> /dev/null
+yum update 1> /dev/null 2> /dev/null
 apt-get install curl -y 1> /dev/null 2> /dev/null
 yum install squid -y 1> /dev/null 2> /dev/null
 yum install squid3 -y 1> /dev/null 2> /dev/null
@@ -61,14 +61,14 @@ echo -e "\033[1;33m ######################################"
 echo -e "\033[1;31mNao deixe em branco"
 echo -e "\033[1;33mExemplo 1.1.1.1"
 echo -e "\033[1;31mD I G I T E  O  DNS  P R I M A R I O"
-read -p ": " dns
+read -p "> " dns
 
 echo -e "\033[1;33m $dns"
 echo -e "\033[1;33m ######################################"
 echo -e "\033[1;31mNao deixe em branco"
 echo -e "\033[1;33mExemplo 1.0.0.1"
 echo -e "\033[1;31mD I G I T E  O  DNS  S E C U N D A R I O"
-read -p ": " dns1
+read -p "> " dns1
 
 echo -e "\033[1;33m $dns1"
 sleep 2
@@ -82,14 +82,10 @@ echo -e "\033[1;33m ######################################"
 sleep 2
 
 rm /etc/resolv.conf 1>/dev/null 2>/dev/null
-sleep 1
-echo "nameserver $dns $dns1 ">> /etc/resolv.conf
-sleep 1
-chmod 777 /etc/resolv.conf 1>/dev/null 2>/dev/null
-sleep 1
+echo "nameserver $dns $dns" >> /etc/ssh/sshd_config
+chmod 777 /etc/resolv.conf
 service networking restart 1>/dev/null 2>/dev/null
 /etc/init.d/networking restart 1>/dev/null 2>/dev/null
-clear
 
 echo -e "\033[01;31mDNS CONFIGURADO\033[0m"
 echo -e "\033[1;33m ######################################"
@@ -144,7 +140,6 @@ clear
 rm /etc/default/stunnel4
 clear
 cat stunnel.crt stunnel.key > stunnel.pem
-chmod 640 stunnel.key stunnel.pem
 mv stunnel.pem /etc/stunnel/
 clear
 
@@ -322,7 +317,6 @@ ufw allow ssh 1> /dev/null 2> /dev/null
 ufw allow http 1> /dev/null 2> /dev/null
 ufw allow squid 1> /dev/null 2> /dev/null
 ufw allow squid3 1> /dev/null 2> /dev/null
-ufw allow 22 1> /dev/null 2> /dev/null
 ufw allow https 1> /dev/null 2> /dev/null
 ufw allow 443 1> /dev/null 2> /dev/null
 ufw allow 80 1> /dev/null 2> /dev/null
@@ -351,10 +345,11 @@ rm proxy.py > /dev/null 2> /dev/null
 rm proxy53.py > /dev/null 2> /dev/null
 rm proxy.txt > /dev/null 2> /dev/null
 rm proxy53.py.1 > /dev/null 2> /dev/null
-rm proxy.py1 > /dev/null 2> /dev/null
-rm proxy.txt1 > /dev/null 2> /dev/null
+rm proxy.py.1 > /dev/null 2> /dev/null
+rm proxy.txt.1 > /dev/null 2> /dev/null
 rm proxy7300.py > /dev/null 2> /dev/null
 rm proxy7300.py.1 > /dev/null 2> /dev/null
+clar
 
 echo -e "\033[1;33m ######################################"
 sleep 1
