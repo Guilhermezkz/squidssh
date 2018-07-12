@@ -1,9 +1,9 @@
 import socket, threading, thread, select, signal, sys, time, getopt
 
-# Python Proxy
+# Python Proxy ou Socks
 
 # Porta do Proxy
-proxyport = input('Digite a Porta: ')
+proxyport = input('Digite a Porta do Proxy, e aperte enter: ')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
@@ -15,7 +15,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 200 <font color="red">By: @LindoFuLL</font> <font color="blue">Canal: @PayloadHTTP</font>\r\n\r\n'
+RESPONSE = 'HTTP/1.1 200 <font color="red">Python Proxy / Socks</font>\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 
@@ -225,6 +225,51 @@ class ConnectionHandler(threading.Thread):
             if error:
                 break
 
+
+def print_usage():
+    print 'Usage: proxy.py -p <port>'
+    print '       proxy.py -b <bindAddr> -p <port>'
+    print '       proxy.py -b 0.0.0.0 -p 80'
+
+def parse_args(argv):
+    global LISTENING_ADDR
+    global LISTENING_PORT
+
+    try:
+        opts, args = getopt.getopt(argv,"hb:p:",["bind=","port="])
+    except getopt.GetoptError:
+        print_usage()
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print_usage()
+            sys.exit()
+        elif opt in ("-b", "--bind"):
+            LISTENING_ADDR = arg
+        elif opt in ("-p", "--port"):
+            LISTENING_PORT = int(arg)
+
+
+def main(host=LISTENING_ADDR, port=LISTENING_PORT):
+
+    print "\n:-------PythonProxy-------:\n"
+    print ":---FUNCIONANDO LEGAL:\n"
+    print "RODANDO IP: " + LISTENING_ADDR
+    print "RODANDO NA PORTA: " + str(LISTENING_PORT) + "\n"
+    print ":--CANAL: @PayloadHTTP BY: @LindoFuLL:\n"
+    print ":------SAIA E DEIXE RODANDO EM SEGUNDO PLANO:\n"
+    print ":-------------------------:\n"
+
+    server = Server(LISTENING_ADDR, LISTENING_PORT)
+    server.start()
+
+    while True:
+        try:
+            time.sleep(2)
+        except KeyboardInterrupt:
+            print 'Parando...'
+            server.close()
+            break
 
 if __name__ == '__main__':
     parse_args(sys.argv[1:])
