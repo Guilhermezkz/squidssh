@@ -3,7 +3,7 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Python Proxy ou Socks
 
 # Porta do Proxy
-proxyport = input('Digite a Porta do Proxy: ')
+proxyport = input('<font color="red">Digite a Porta do Proxy</font>: ')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
@@ -15,7 +15,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 200 ok <font color="red">Python Proxy / Socks</font>\r\n\r\n'
+RESPONSE = 'HTTP/1.1 200 <font color="red">Python Proxy / Socks</font>\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 
