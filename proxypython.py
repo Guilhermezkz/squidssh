@@ -3,7 +3,7 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Python Proxy
 
 # Porta do Proxy
-proxyport = input('proxyport')
+proxyport = input('')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
