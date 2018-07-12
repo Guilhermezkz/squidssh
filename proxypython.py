@@ -15,8 +15,8 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/2 200 ok <font color="red">Python Proxy / Socks</font>\r\n\r\n'
-#RESPONSE = 'HTTP/2 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
+RESPONSE = 'HTTP/1.1 200 ok <font color="red">Python Proxy / Socks</font>\r\n\r\n'
+#RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 
 class Server(threading.Thread):
@@ -267,7 +267,7 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print 'PARANDO...'
+            print '<font color="red">PARANDO...</font>'
             server.close()
             break
 
