@@ -3,7 +3,7 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Python Proxy ou Socks
 
 # Porta do Proxy
-proxyport = input('Digite a Porta do Proxy, e aperte enter: ')
+proxyport = input('Digite a Porta do Proxy: ')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
@@ -253,11 +253,11 @@ def parse_args(argv):
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
 
     print "\n:-------PythonProxy-------:\n"
-    print ":---FUNCIONANDO LEGAL:\n"
+    print ":---FUNCIONANDO LEGAL\n"
     print "RODANDO IP: " + LISTENING_ADDR
     print "RODANDO NA PORTA: " + str(LISTENING_PORT) + "\n"
-    print ":--CANAL: @PayloadHTTP BY: @LindoFuLL:\n"
-    print ":------SAIA E DEIXE RODANDO EM SEGUNDO PLANO:\n"
+    print ":--CANAL: @PayloadHTTP BY: @LindoFuLL\n"
+    print ":---DEIXE RODANDO EM SEGUNDO PLANO-----\n"
     print ":-------------------------:\n"
 
     server = Server(LISTENING_ADDR, LISTENING_PORT)
@@ -267,7 +267,7 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print 'Parando...'
+            print 'PARANDO...'
             server.close()
             break
 
