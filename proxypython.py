@@ -3,7 +3,7 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Python Proxy
 
 # Porta do Proxy
-proxyport = input('')
+proxyport = input('Digite a Porta: ')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
@@ -225,41 +225,6 @@ class ConnectionHandler(threading.Thread):
             if error:
                 break
 
-
-def print_usage():
-    print 'Usage: proxy.py -p <port>'
-    print '       proxy.py -b <bindAddr> -p <port>'
-    print '       proxy.py -b 0.0.0.0 -p 80'
-
-def parse_args(argv):
-    global LISTENING_ADDR
-    global LISTENING_PORT
-
-    try:
-        opts, args = getopt.getopt(argv,"hb:p:",["bind=","port="])
-    except getopt.GetoptError:
-        print_usage()
-        sys.exit(2)
-    for opt, arg in opts:
-        if opt == '-h':
-            print_usage()
-            sys.exit()
-        elif opt in ("-b", "--bind"):
-            LISTENING_ADDR = arg
-        elif opt in ("-p", "--port"):
-            LISTENING_PORT = int(arg)
-
-
-    server = Server(LISTENING_ADDR, LISTENING_PORT)
-    server.start()
-
-    while True:
-        try:
-            time.sleep(2)
-        except KeyboardInterrupt:
-            print 'Stopping...'
-            server.close()
-            break
 
 if __name__ == '__main__':
     parse_args(sys.argv[1:])
