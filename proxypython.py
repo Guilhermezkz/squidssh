@@ -3,7 +3,7 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Python Proxy ou Socks
 
 # Porta do Proxy
-proxyport = input(' <font color="red">Digite a Porta do Proxy</font> : ')
+proxyport = input('Digite a Porta do Proxy:')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
@@ -267,7 +267,7 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print '<font color="red">PARANDO...</font>'
+            print '----PARANDO...'
             server.close()
             break
 
