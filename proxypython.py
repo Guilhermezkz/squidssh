@@ -274,4 +274,3 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
 if __name__ == '__main__':
     parse_args(sys.argv[1:])
     main()
-    exit()
