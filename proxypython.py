@@ -258,6 +258,7 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
     print "RODANDO NA PORTA: " + str(LISTENING_PORT) + "\n"
     print ":---CANAL: @PayloadHTTP BY: @LindoFuLL---\n"
     print ":---DEIXE RODANDO EM SEGUNDO PLANO-------\n"
+    print ":---------- APERTE,  CTRL A D ------------:\n"
     print ":---------------------------------------:\n"
 
     server = Server(LISTENING_ADDR, LISTENING_PORT)
