@@ -3,7 +3,7 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Python Proxy ou Socks
 
 # Porta do Proxy
-proxyport = input('\033[1;33mDigite a Porta do Proxy \033[01;34m <-l-> \033[0m obs, Nao pode ser uma porta que ja esta usando no squid: ')
+proxyport = input('\033[1;34mDigite a Porta do Proxy \033[01;34m <--> \033[0m obs, Nao pode ser uma porta que ja esta usando no squid: ')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
