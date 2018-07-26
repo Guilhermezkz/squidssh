@@ -253,12 +253,12 @@ def parse_args(argv):
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
 
     print "\n:-------------PythonProxy-------------:\n"
-    print ":---FUNCIONANDO LEGAL\n"
+    print "\033[42m'+'\033[1m'+'\033[33m'+':---FUNCIONANDO LEGAL'+'\033[0;0m"
     print "LISTENING: " + LISTENING_ADDR
     print "RODANDO NA PORTA: " + str(LISTENING_PORT) + "\n"
     print ":---CANAL: @PayloadHTTP BY: @LindoFuLL---\n"
     print ":---DEIXE RODANDO EM SEGUNDO PLANO-------\n"
-    print ":---------- APERTE,  CTRL A D ------------:\n"
+    print "\033[31m'+':---------- APERTE,  CTRL A D ------------:'+'\033[0;0m"
     print ":---------------------------------------:\n"
 
     server = Server(LISTENING_ADDR, LISTENING_PORT)
