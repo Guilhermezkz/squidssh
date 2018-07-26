@@ -3,7 +3,7 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Python Proxy ou Socks
 
 # Porta do Proxy
-proxyport = input('Digite a Porta do Proxy, obs. nao pode ser uma porta que ja esta usando no squid: ')
+proxyport = input('\033[34mDigite a Porta do Proxy, obs. nao pode ser uma porta que ja esta usando no squid: \033[0;0m')
 
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
@@ -252,13 +252,13 @@ def parse_args(argv):
 
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
 
-    print "\n:-------------PythonProxy-------------:\n"
-    print "\033[34m'+':---FUNCIONANDO LEGAL'+'\033[0;0m"
-    print "LISTENING: " + LISTENING_ADDR
-    print "RODANDO NA PORTA: " + str(LISTENING_PORT) + "\n"
+    print "\033[34m:-------------PythonProxy-------------:\033[0;0m"
+    print "\033[34m:---FUNCIONANDO LEGAL\033[0;0m"
+    print "\033[34mLISTENING: \033[0;0m" + LISTENING_ADDR
+    print "\033[34mRODANDO NA PORTA: \033[0;0m" + str(LISTENING_PORT) + "\n"
     print ":---CANAL: @PayloadHTTP BY: @LindoFuLL---\n"
     print ":---DEIXE RODANDO EM SEGUNDO PLANO-------\n"
-    print "\033[31m'+':---------- APERTE,  CTRL A D ------------:'+'\033[0;0m"
+    print "\033[31m :---------- APERTE,  CTRL A D ------------: \033[0;0m"
     print ":---------------------------------------:\n"
 
     server = Server(LISTENING_ADDR, LISTENING_PORT)
