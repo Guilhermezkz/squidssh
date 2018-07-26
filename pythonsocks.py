@@ -5,9 +5,6 @@ import socket, threading, thread, select, signal, sys, time, getopt
 # Porta do Proxy
 proxyport = input('Digite a Porta do Proxy, obs. nao pode ser uma porta que ja esta usando no squid: ')
 
-# Nome na RESPOSTA 200 OK
-status200 = input('Digite o Nome de Resposta do 200 OK: ')
-
 # CONFIG
 LISTENING_ADDR = '0.0.0.0'
 LISTENING_PORT = proxyport
@@ -18,7 +15,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 200 <font color="red"> status200 </font>\r\n\r\n'
+RESPONSE = 'HTTP/1.1 200 <font color="red">Python Proxy / Socks</font>\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 
