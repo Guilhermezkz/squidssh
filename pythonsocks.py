@@ -253,7 +253,7 @@ def parse_args(argv):
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
 
     print "\n:-------------PythonProxy-------------:\n"
-    print "\033[42m'+'\033[1m'+'\033[33m'+':---FUNCIONANDO LEGAL'+'\033[0;0m"
+    print "\033[34m'+':---FUNCIONANDO LEGAL'+'\033[0;0m"
     print "LISTENING: " + LISTENING_ADDR
     print "RODANDO NA PORTA: " + str(LISTENING_PORT) + "\n"
     print ":---CANAL: @PayloadHTTP BY: @LindoFuLL---\n"
@@ -268,7 +268,7 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print '----PARANDO...'
+            print '\033[31m'+'----PARANDO'+'\033[0;0m'
             server.close()
             break
 
